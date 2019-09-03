@@ -1,19 +1,17 @@
 import * as React from 'react';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import { AppBar, Toolbar, Typography, Button }  from '@material-ui/core/'; 
+import '../../../assets/scss/Header.scss';
 
 const Header = () => {
   return (
-    <div>
-    <AppBar position="static">
-      <Toolbar>
+    <div >
+    <AppBar position="static" className="app-bar">
+      <Toolbar className="display-flex justify-content-between">
         <Typography variant="h6" >
-          News
+          WOLF CHALLENGE
         </Typography>
-        <Button color="inherit">Login</Button>
+        <Button color="inherit"></Button>
       </Toolbar>
     </AppBar>
   </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../assets/scss/App.scss';
 
 import Header from '../component/common/Header.js';
 
