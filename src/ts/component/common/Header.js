@@ -11,7 +11,9 @@ const Header = () => {
         <Typography variant="h6" >
           WOLF CHALLENGE
         </Typography>
-        <Button color="inherit"></Button>
+
+        <Button color="inherit">Aplicaciones</Button>
+
       </Toolbar>
     </AppBar>
   </div>
