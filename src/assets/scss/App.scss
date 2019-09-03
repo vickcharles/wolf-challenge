@@ -1,12 +1,23 @@
 body {
   margin: 0px !important;
+  background-color: #f2f0f5 !important;
 }
 
 /*FLEXBOX*/
 .display-flex {
   display: flex !important;
-}    
+}
+
+/*MARGIN*/
+.margin-right-xsmall {
+  margin-right: 5px !important;
+}
 
 .justify-content-between {
  justify-content: space-between !important;
+}
+
+/*BACKGROUND COLOR*/
+.background-color-white {
+  background-color: white !important;
 }

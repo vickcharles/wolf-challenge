@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AppContainer from './ts/app/AppContainer.js';
 import * as serviceWorker from './serviceWorker';
 import './assets/scss/App.scss';
+import './assets/scss/overrides.scss'
 
 ReactDOM.render(<AppContainer />, document.getElementById('root'));
 
