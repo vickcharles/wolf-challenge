@@ -8,6 +8,10 @@ body {
   display: flex !important;
 }
 
+.justify-content-between {
+  justify-content: space-between !important;
+ }
+
 /*MARGIN*/
 .margin-right-xsmall {
   margin-right: 5px !important;
@@ -17,13 +21,22 @@ body {
   margin-top: 5px !important;
 }
 
+/*TEXT*/
+.text-align-center {
+  text-align: center !important;
+}
+
+.text-align-right {
+  text-align: right !important;
+}
+
 .margin-top-small {
   margin-top: 20px !important;
 }
 
-
-.justify-content-between {
- justify-content: space-between !important;
+/*COLOR*/
+.color-grey {
+  color: #b5b5b5 !important;
 }
 
 /*BACKGROUND COLOR*/

@@ -3,8 +3,21 @@
   background-color: white !important;
 }
 
+.MuiButton-containedPrimary {
+  color: white !important;
+  background-color: #8e54e9 !important;
+}
+
 .MuiDivider-root {
   background-color: white !important;
   height: 2px !important;
 }
 
+.MuiPaper-elevation1 {
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06) !important;
+  padding: 20px 20px 20px 20px !important;
+}
+
+.MuiTypography-h6 {
+  font-weight: 400 !important;
+}
