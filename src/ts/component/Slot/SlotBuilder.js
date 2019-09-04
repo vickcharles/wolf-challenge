@@ -190,7 +190,7 @@ class SlotBuilder extends React.Component {
 							<div className="align-self-center">
 							  <Button
                   variant="contained"
-									color="primary"
+									color="secondary"
 									onClick={this.handleAddSlot}
                   className="margin-right-xsmall margin-top-small"
                 >
@@ -198,6 +198,15 @@ class SlotBuilder extends React.Component {
                 </Button>
 							</div>
 						</div>
+				 </Grid>
+				 <Grid xs={12} className="text-align-right">
+				    <Button
+              variant="contained"
+							color="primary"
+              className="margin-right-xsmall margin-top-small full-width"
+            >
+              SUBMIT
+            </Button>
 				 </Grid>
 			</Grid>
 		);

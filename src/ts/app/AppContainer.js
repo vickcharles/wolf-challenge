@@ -8,9 +8,9 @@ import Interviews from '../pages/Interviews';
 function AppContainer() {
   return (
     <div className="App">
-      <Header />
       <Router>
-        <Route path="/" component={HomePage} />
+        <Header />
+        <Route path="/" exact={true} component={HomePage} />
         <Route path="/scheduled-interviews" component={Interviews} />
       </Router>
     </div>

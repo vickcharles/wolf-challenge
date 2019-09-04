@@ -13,6 +13,8 @@ import {
 import '../../../assets/scss/Header.scss';
 import SlotBuilder from '../../component/Slot/SlotBuilder';
 
+import { Link } from "react-router-dom";
+
 const Header = () => {
   const [open, setOpen] = React.useState();
 
@@ -21,9 +23,11 @@ const Header = () => {
       <AppBar position="static" className="app-bar">
         <Container>
           <Toolbar className="display-flex justify-content-between">
-            <Typography variant="h6" >
-              WOLF CHALLENGE
-            </Typography>
+            <Link to="/">
+              <Typography variant="h6" >
+                WOLF CHALLENGE
+              </Typography>
+            </Link>
             <div>
               <Button
                 onClick={() => setOpen(true)}
@@ -33,9 +37,11 @@ const Header = () => {
               >
                 Post a job
               </Button>
-              <Button color="inherit">
-                All the scheduled interviews
-              </Button>
+              <Link to="/scheduled-interviews">
+                <Button color="inherit">
+                  All the scheduled interviews
+                </Button>
+              </Link>
             </div>
           </Toolbar>
         </Container>

@@ -13,9 +13,20 @@ label {
   color: #9c9c9c !important;
 }
 
+a {
+  text-decoration: none !important;
+  color: white !important;
+}
+
 /*LIST*/
 li {
   color: $colorSecondary;
+}
+
+/*fULL WIDTH*/
+
+.full-width {
+  width: 100% !important;
 }
 
 /*FLEXBOX*/
