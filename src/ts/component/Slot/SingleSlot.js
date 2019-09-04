@@ -29,7 +29,7 @@ const SingleSlot = (props) => {
 
   const renderSelectTime = () => (
     <FormControl component="fieldset" >
-      <FormLabel component="legend">Select a slot </FormLabel>
+      <FormLabel component="legend">Select a slot</FormLabel>
         <RadioGroup
           aria-label="gender"
           name="gender1"

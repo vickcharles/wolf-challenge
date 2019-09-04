@@ -12,7 +12,7 @@ const SectionTitle = (props) => {
 				{props.text}
 			</Typography>
 			<div className="margin-top-xsmall">
-			  <Divider />
+			  <Divider className="background-color-white"/>
 			</div>
     </div>
   )

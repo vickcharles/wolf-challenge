@@ -43,14 +43,17 @@ const Header = () => {
       <Dialog
         maxWidth="sm"
         fullWidth={true}
+        className="dialog"
         open={open}
-        keepMounted
+        scroll="body"
         onClose={() => setOpen(false)}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">CREATE NEW SLOT</DialogTitle>
-        <SlotBuilder />
+        <DialogTitle id="alert-dialog-slide-title">CREATE A NEW SLOT</DialogTitle>
+        <Container maxWidth="lg">
+          <div className="margin-top-large">
+            <SlotBuilder />
+          </div>
+        </Container>
       </Dialog>
     </div>
   );

@@ -1,8 +1,19 @@
 @import "variables";
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 body {
   margin: 0px !important;
   background-color: #f2f0f5 !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+label {
+  color: #b5b5b5;
+  font-size: 14px;
+}
+
+.MuiTypography-root {
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 /*FLEXBOX*/
@@ -10,8 +21,25 @@ body {
   display: flex !important;
 }
 
+.display-inherit {
+  display: inherit !important;
+}
+
 .justify-content-between {
   justify-content: space-between !important;
+ }
+
+ /*DATE*/
+.custom-input {
+   background-color: #f2f0f5 !important;
+   padding: 13px 18px !important;
+   border: 2px solid #ebeef1 !important;
+   width: 150px !important;
+   margin-top: 5px !important;
+ }
+
+ .custom-input:focus {
+   outline: none !important;
  }
 
 /*MARGIN*/
@@ -36,6 +64,10 @@ body {
   margin-top: 20px !important;
 }
 
+.margin-top-large {
+  margin-top: 40px !important;
+}
+
 /*COLOR*/
 .color-grey {
   color: #b5b5b5 !important;
@@ -44,6 +76,10 @@ body {
 /*BACKGROUND COLOR*/
 .background-color-white {
   background-color: white !important;
+}
+
+.background-color-grey {
+  color: #b5b5b5 !important;
 }
 
 /*COLOR*/

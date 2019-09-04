@@ -5,6 +5,43 @@
   background-color: white !important;
 }
 
+.MuiGrid-spacing-xs-7 > .MuiGrid-item {
+  padding: 10px !important;
+}
+
+.MuiDialog-paperFullWidth {
+  height: 500px !important;
+}
+
+.MuiDialogTitle-root {
+  background-color: $containedPrimary !important;
+  color:  white !important;
+  border-bottom: 2px solid $containedPrimary ;
+}
+
+/*INPUT*/
+.MuiFilledInput-root {
+  background-color: #f2f0f5 !important;
+  border: 2px solid #ebeef1 !important;
+}
+
+.MuiFilledInput-underline:after,
+.MuiFilledInput-underline:before {
+  display: none !important;
+}
+
+.MuiFormControl-marginNormal {
+  margin-top: 5px !important;
+}
+
+.MuiInputBase-input:focus {
+  outline: none !important;
+}
+
+.MuiInputBase-input {
+  padding: 13px 18px !important;
+}
+
 .MuiButton-containedPrimary {
   color: white !important;
   background-color: $containedPrimary  !important;
@@ -19,7 +56,6 @@
 }
 
 .MuiDivider-root {
-  background-color: white !important;
   height: 2px !important;
 }
 
