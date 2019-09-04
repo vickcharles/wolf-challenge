@@ -1,11 +1,21 @@
+@import "variables";
+
 .MuiButton-containedSecondary {
-  color: #8e54e9 !important;
+  color: $containedPrimary !important;
   background-color: white !important;
 }
 
 .MuiButton-containedPrimary {
   color: white !important;
-  background-color: #8e54e9 !important;
+  background-color: $containedPrimary  !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: $containedPrimary  !important;
+}
+
+.MuiRadio-colorSecondary.Mui-checked {
+  color: $containedPrimary !important;
 }
 
 .MuiDivider-root {

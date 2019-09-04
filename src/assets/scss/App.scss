@@ -1,3 +1,5 @@
+@import "variables";
+
 body {
   margin: 0px !important;
   background-color: #f2f0f5 !important;
@@ -46,5 +48,5 @@ body {
 
 /*COLOR*/
 .color-primary {
-  color: #8e54e9 !important;
+  color: $containedPrimary !important;
 }

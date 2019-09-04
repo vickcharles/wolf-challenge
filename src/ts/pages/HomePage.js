@@ -2,7 +2,8 @@ import * as React from 'react';
 import SectionTitle from '../component/common/SectionTitle.js';
 
 import { Container, Grid } from '@material-ui/core/';
-import SingleSlot from '../component/Slot/SingleSlot';
+import SlotsList from '../component/Slot/SlotsList';
+
 
 const HomePage = () => {
   return (
@@ -10,10 +11,7 @@ const HomePage = () => {
       <Container>
         <SectionTitle text="Aplications" />
           <Grid md={5}>
-            <SingleSlot
-              name="hola"
-              description="how are you"
-            />
+            <SlotsList />
           </Grid>
       </Container>
     </div>
