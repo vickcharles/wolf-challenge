@@ -14,20 +14,42 @@ import {
 
 const SingleSlot = (props) => {
   const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState({});
+
+  function handleChange(event) {
+    setValue(event.target.value);
+    const id = event.target.value;
+    const item = props.slot.slots.filter((item) => item.id === id )
+    setValue(item);
+  }
+
+  const handleSubmit = () => {
+    alert('TODO')
+  }
 
   const renderSelectTime = () => (
-     <FormControl component="fieldset" >
-        <FormLabel component="legend">Select a slot</FormLabel>
+    <FormControl component="fieldset" >
+      <FormLabel component="legend">Select a slot </FormLabel>
         <RadioGroup
           aria-label="gender"
           name="gender1"
+          value={value.id}
+          onChange={handleChange}
         >
-          <FormControlLabel value="female" control={<Radio />} label="9am - 11pm" />
-          <FormControlLabel value="male" control={<Radio />} label="11pm - 2pm" />
-          <FormControlLabel value="other" control={<Radio />} label="2pm - 4pm" />
-        </RadioGroup>
-      </FormControl>
-  )
+        {
+          props.slot.slots.map((item) => (
+            <FormControlLabel value={item.id} control={<Radio />} label={`${item.startTime} - ${item.endTime}`} />
+          ))
+        }
+      </RadioGroup>
+    </FormControl>
+  );
+
+  const renderButton = () => (open ?
+    <Button onClick={handleSubmit} variant="contained" color="primary">SEND</Button>
+    :
+    <Button onClick={() => setOpen(true)} variant="contained" color="primary">APPLY</Button>
+  );
 
   return (
     <Paper className="margin-top-small">
@@ -39,14 +61,14 @@ const SingleSlot = (props) => {
             <Typography className="margin-right-xsmall">Date:</Typography>
             <Typography className="color-grey">{props.slot.date}</Typography>
           </div>
-           {open &&
-            <div className="margin-top-small">
-              {renderSelectTime()}
-            </div>
-           }
+            {open &&
+              <div className="margin-top-small">
+                {renderSelectTime()}
+              </div>
+            }
         </Grid>
         <Grid xs={open ? 12 : 3} className="text-align-right">
-          <Button onClick={() => setOpen(true)} variant="contained" color="primary">APPLY</Button>
+          {renderButton()}
         </Grid>
       </Grid>
     </Paper>

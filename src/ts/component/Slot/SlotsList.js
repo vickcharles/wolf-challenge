@@ -8,10 +8,12 @@ const slots = [{
   date: '1 sebetember',
   slots: [
     {
+     id: '0',
      startTime: '8am',
      endTime: '9am'
     },
     {
+      id: '1',
       startTime: '11am',
       endTime: '2pm'
     }
@@ -23,12 +25,19 @@ const slots = [{
   date: '1 sebetember',
   slots: [
     {
+     id: '0',
      startTime: '8am',
      endTime: '9am'
     },
     {
+      id: '1',
       startTime: '11am',
       endTime: '2pm'
+    },
+    {
+      id: '2',
+      startTime: '2pm',
+      endTime: '4pm'
     }
   ]
 }
