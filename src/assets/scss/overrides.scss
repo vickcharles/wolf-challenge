@@ -9,8 +9,16 @@
   padding: 10px !important;
 }
 
+.MuiIconButton-colorPrimary {
+  color: $containedPrimary !important;
+}
+
 .MuiDialog-paperFullWidth {
-  height: 500px !important;
+  height: 700px !important;
+}
+
+.MuiTypography-body1 {
+  color: $colorSecondary;
 }
 
 .MuiDialogTitle-root {
@@ -21,6 +29,7 @@
 
 /*INPUT*/
 .MuiFilledInput-root {
+  color: #9c9c9c  !important;
   background-color: #f2f0f5 !important;
   border: 2px solid #ebeef1 !important;
 }

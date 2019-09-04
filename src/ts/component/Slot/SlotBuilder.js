@@ -4,19 +4,83 @@ import {
 	TextField,
 	Grid,
 	Typography,
-	Divider
+	Button,
+	Divider,
+	IconButton
 } from '@material-ui/core/';
+
+import moment from 'moment';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import DeleteIcon from '@material-ui/icons/Delete';
+import '../../../assets/scss/SlotBuilder.scss';
 
 class SlotBuilder extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			name: '',
+			lastName: '',
+			title: '',
+			date: Date.now(),
+			startTime: Date.now(),
+			endTime: Date.now(),
+			slots: []
+		}
+	}
+
+	 handleChange = (e) => {
+    const target = e.currentTarget;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      ...this.state,
+      [name]: value
+    });
+	}
+
+	handleAddSlot = () => {
+		const slotToAdd = {
+			startTime: this.state.startTime,
+      endTime:  this.state.endTime
+		}
+		if(this.state.startTime && this.state.endTime) {
+			this.setState({...this.state, slots: [...this.state.slots, slotToAdd ]})
+		}
+	}
+
+	handleChangeDate = (date) => {
+		this.setState({
+      ...this.state,
+      date
+    });
+	}
+
+	handleChangeStartTime = (date) => {
+		this.setState({
+      ...this.state,
+      startTime: date
+    });
+	}
+
+	handleChangeEndTime = (date) => {
+		this.setState({
+      ...this.state,
+      endTime: date
+    });
+	}
+
+
 	render() {
 		const ExampleCustomInput = ({ value, onClick }) => (
 			<button className="custom-input" onClick={onClick}>
 				{value}
 			</button>
 		);
+
+
     return (
 			<Grid container={true} spacing={7}>
 			  <Grid item={true} xs={6}>
@@ -24,7 +88,10 @@ class SlotBuilder extends React.Component {
 			    <TextField
 						id="outlined-name"
 						fullWidth
-            margin="normal"
+						margin="normal"
+						onChange={this.handleChange}
+						name="name"
+						value={this.state.name}
             variant="filled"
           />
 				</Grid>
@@ -33,7 +100,11 @@ class SlotBuilder extends React.Component {
 			    <TextField
 						id="outlined-name"
 						fullWidth
-            margin="normal"
+						lastName="lastName"
+						onChange={this.handleChange}
+						value={this.state.lastName}
+						margin="normal"
+						name="lastName"
             variant="filled"
           />
 				</Grid>
@@ -41,8 +112,10 @@ class SlotBuilder extends React.Component {
 			  	<label>Title</label>
 			    <TextField
 						id="outlined-name"
-						selected={new Date()}
 						fullWidth
+						value={this.state.title}
+						name="title"
+						onChange={this.handleChange}
 						margin="normal"
 						placeholder="ej: web developer needed"
             variant="filled"
@@ -51,9 +124,10 @@ class SlotBuilder extends React.Component {
 				<Grid item={true} xs={12}>
 			  	<label className="display-inherit">Date</label>
 			    <DatePicker
-						onChange={() => {/**/}}
 						fullWidth={true}
-						selected={new Date()}
+						selected={this.state.date}
+						onChange={this.handleChangeDate}
+						name="date"
 					  peekNextMonth={true}
 					  showMonthDropdown={true}
 					  showYearDropdown={true}
@@ -63,11 +137,67 @@ class SlotBuilder extends React.Component {
 				</Grid>
 	       <Grid item={true} xs={12}>
 				    <Typography className="color-primary">
-				      ADD OR REMOVE SLOT
+				      ADD OR REMOVE SLOTS
 			      </Typography>
 			      <div className="margin-top-xsmall">
 			        <Divider className="background-color-grey"/>
 			      </div>
+						<div>
+							<ul>
+						    {
+								  this.state.slots.map((item, key) => (
+								  	<li key={key} className="margin-top-xsmall display-flex">
+										  <Typography className="align-self-center">
+											  - {moment(item.startTime).format('h:mm:ss a')}  - {moment(item.endTime).format('h:mm:ss a')} 
+									  	</Typography>
+											<IconButton edge="end" aria-label="delete" color="primary">
+                        <DeleteIcon />
+                      </IconButton>
+									  </li>
+								  ))
+							  }
+							</ul>
+						</div>
+						<div className="display-flex margin-top-small">
+						  <div className="margin-right-xsmall">
+							  <label className="display-inherit">Start Time</label>
+						    <DatePicker
+                  selected={this.state.startTime}
+                  showTimeSelect
+									showTimeSelectOnly
+									placeholderText="Select Start Time"
+                  timeIntervals={15}
+									timeCaption="Time"
+									onChange={this.handleChangeStartTime}
+									dateFormat="h:mm aa"
+									customInput={<ExampleCustomInput />}
+                />
+						  </div>
+							<div className="margin-right-small">
+							  <label className="display-inherit">End Time</label>
+						    <DatePicker
+                  selected={this.state.endTime}
+									showTimeSelect
+									showTimeSelectOnly
+									placeholderText="Select End Time"
+									timeIntervals={15}
+									onChange={this.handleChangeEndTime}
+                  timeCaption="Time"
+									dateFormat="h:mm aa"
+									customInput={<ExampleCustomInput />}
+                />
+						  </div>
+							<div className="align-self-center">
+							  <Button
+                  variant="contained"
+									color="primary"
+									onClick={this.handleAddSlot}
+                  className="margin-right-xsmall margin-top-small"
+                >
+                  ADD TIME
+                </Button>
+							</div>
+						</div>
 				 </Grid>
 			</Grid>
 		);

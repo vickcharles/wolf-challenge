@@ -1,0 +1,14 @@
+
+.custom-input {
+  background-color: #f2f0f5 !important;
+  font-size: 14px !important;
+  padding: 13px 18px !important;
+  border: 2px solid #ebeef1 !important;
+  width: 150px !important;
+  color: #b5b5b5 !important;
+  margin-top: 5px !important;
+
+  &:focus {
+      outline: none !important;
+  }
+}

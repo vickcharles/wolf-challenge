@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core/';
 
 const SingleSlot = (props) => {
+
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState({});
 
@@ -55,10 +56,12 @@ const SingleSlot = (props) => {
     <Paper className="margin-top-small">
       <Grid container={true} alignItems="center">
         <Grid xs={open ? 12 : 9}>
-			    <Typography variant="h6">{props.slot.name}</Typography>
+          <Typography variant="h6" className="color-secondary">
+            {props.slot.name}
+          </Typography>
           <Typography className="color-grey">{props.slot.description}</Typography>
           <div className="display-flex margin-top-small">
-            <Typography className="margin-right-xsmall">Date:</Typography>
+            <Typography className="margin-right-xsmall color-secondary">Date:</Typography>
             <Typography className="color-grey">{props.slot.date}</Typography>
           </div>
             {open &&

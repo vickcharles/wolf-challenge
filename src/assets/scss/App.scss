@@ -8,17 +8,23 @@ body {
 }
 
 label {
-  color: #b5b5b5;
+  color: $containedPrimary;
   font-size: 14px;
+  color: #9c9c9c !important;
 }
 
-.MuiTypography-root {
-  font-family: 'Montserrat', sans-serif !important;
+/*LIST*/
+li {
+  color: $colorSecondary;
 }
 
 /*FLEXBOX*/
 .display-flex {
   display: flex !important;
+}
+
+.align-self-center {
+  align-self: center !important;
 }
 
 .display-inherit {
@@ -29,27 +35,24 @@ label {
   justify-content: space-between !important;
  }
 
- /*DATE*/
-.custom-input {
-   background-color: #f2f0f5 !important;
-   padding: 13px 18px !important;
-   border: 2px solid #ebeef1 !important;
-   width: 150px !important;
-   margin-top: 5px !important;
- }
-
- .custom-input:focus {
-   outline: none !important;
- }
 
 /*MARGIN*/
 .margin-right-xsmall {
   margin-right: 5px !important;
 }
 
+.margin-right-small {
+  margin-right: 20px !important;
+}
+
+.margin-top-small {
+  margin-top: 20px !important;
+}
+
 .margin-top-xsmall {
   margin-top: 5px !important;
 }
+
 
 /*TEXT*/
 .text-align-center {
@@ -73,6 +76,10 @@ label {
   color: #b5b5b5 !important;
 }
 
+.color-secondary {
+  color: $colorSecondary !important;
+}
+
 /*BACKGROUND COLOR*/
 .background-color-white {
   background-color: white !important;
@@ -85,4 +92,8 @@ label {
 /*COLOR*/
 .color-primary {
   color: $containedPrimary !important;
+}
+
+.MuiTypography-root {
+  font-family: 'Montserrat', sans-serif !important;
 }
