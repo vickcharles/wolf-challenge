@@ -113,7 +113,7 @@ class SlotBuilder extends React.Component {
     return (
 			<Grid container={true} spacing={7}>
 			  <Grid item={true} xs={6}>
-			  	<label>Nombre</label>
+			  	<label>Recruiter's name</label>
 			    <TextField
 						id="outlined-name"
 						fullWidth

@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core/';
 
 import moment from 'moment';
+import db from '../../../firestoreConfig.js';
 
 const SingleSlot = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -27,7 +28,18 @@ const SingleSlot = (props) => {
   }
 
   const handleSubmit = () => {
-    alert('TODO')
+    const reviewToSave = {
+      name: 'vickler',
+      job: db.doc('jobs/' + props.slot.id),
+    }
+
+    db.collection('interviews').add(reviewToSave)
+    .then(() => {
+			console.log('added new job')
+		})
+		.catch(() => {
+			console.log('there is an error')
+		})
   }
 
   const renderSelectTime = () => (
