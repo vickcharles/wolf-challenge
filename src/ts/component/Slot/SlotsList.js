@@ -4,7 +4,6 @@ import SingleSlot from './SingleSlot';
 import db from '../../../firestoreConfig.js';
 
 const SlotsList = () => {
-
   const [slots, setSlot] = React.useState([]);
 
   React.useEffect(() => {

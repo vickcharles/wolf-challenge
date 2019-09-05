@@ -14,7 +14,7 @@ const Interviews = () => {
     <div className="margin-top-small">
       <Container>
         <SectionTitle text="Schedule interviews" />
-        <Grid item={true} md={5}>
+        <Grid item={true} md={6}>
           <InterviewsList />
         </Grid>
       </Container>
