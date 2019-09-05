@@ -47,8 +47,9 @@ const SlotsList = () => {
   return (
     <>
       {
-        slots.map((slot) => (
+        slots.map((slot, key) => (
           <SingleSlot
+            key={key}
             slot={slot}
           />
         ))

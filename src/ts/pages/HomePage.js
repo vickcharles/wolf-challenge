@@ -10,7 +10,7 @@ const HomePage = () => {
     <div className="margin-top-small">
       <Container>
         <SectionTitle text="JOBS NEAR YOU" />
-          <Grid md={5}>
+          <Grid item={true} md={5}>
             <SlotsList />
           </Grid>
       </Container>

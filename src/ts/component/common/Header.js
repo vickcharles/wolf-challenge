@@ -16,7 +16,7 @@ import SlotBuilder from '../../component/Slot/SlotBuilder';
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [open, setOpen] = React.useState();
+  const [open, setOpen] = React.useState(false);
 
   return (
     <div>

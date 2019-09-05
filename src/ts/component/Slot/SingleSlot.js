@@ -55,7 +55,7 @@ const SingleSlot = (props) => {
   return (
     <Paper className="margin-top-small">
       <Grid container={true} alignItems="center">
-        <Grid xs={open ? 12 : 9}>
+        <Grid item={true} xs={open ? 12 : 9}>
           <Typography variant="h6" className="color-secondary">
             {props.slot.name}
           </Typography>
@@ -70,7 +70,7 @@ const SingleSlot = (props) => {
               </div>
             }
         </Grid>
-        <Grid xs={open ? 12 : 3} className="text-align-right">
+        <Grid item={true} xs={open ? 12 : 3} className="text-align-right">
           {renderButton()}
         </Grid>
       </Grid>
