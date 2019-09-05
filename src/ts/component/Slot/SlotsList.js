@@ -1,49 +1,30 @@
 import * as React from 'react';
 
 import SingleSlot from './SingleSlot';
-
-const slots = [{
-  name: 'we developer nened',
-  description: 'we need a good frontend developer with the best skills',
-  date: '1 sebetember',
-  slots: [
-    {
-     id: '0',
-     startTime: '8am',
-     endTime: '9am'
-    },
-    {
-      id: '1',
-      startTime: '11am',
-      endTime: '2pm'
-    }
-  ]
-},
-{
-  name: 'we developer nened',
-  description: 'we need a good frontend developer with the best skills',
-  date: '1 sebetember',
-  slots: [
-    {
-     id: '0',
-     startTime: '8am',
-     endTime: '9am'
-    },
-    {
-      id: '1',
-      startTime: '11am',
-      endTime: '2pm'
-    },
-    {
-      id: '2',
-      startTime: '2pm',
-      endTime: '4pm'
-    }
-  ]
-}
-];
+import db from '../../../firestoreConfig.js';
 
 const SlotsList = () => {
+
+  const [slots, setSlot] = React.useState([]);
+
+  React.useEffect(() => {
+     db.collection('jobs')
+     .onSnapshot((snapshot) => {
+       const jobs = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+        date: doc.data().date.toDate().toString(),
+        slots: doc.data().slots.map((date) =>  ({
+          ...date,
+          startTime: date.startTime.toDate().toString(),
+          endTime: date.endTime.toDate().toString()
+        })),
+       }))
+       console.log(jobs);
+       setSlot(jobs);
+     })
+  }, [])
+
   return (
     <>
       {

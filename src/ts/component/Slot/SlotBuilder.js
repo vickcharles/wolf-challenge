@@ -16,6 +16,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DeleteIcon from '@material-ui/icons/Delete';
 import '../../../assets/scss/SlotBuilder.scss';
 
+import db from '../../../firestoreConfig.js';
+
 class SlotBuilder extends React.Component {
 	constructor() {
 		super();
@@ -51,10 +53,11 @@ class SlotBuilder extends React.Component {
 
 	handleAddSlot = () => {
 		const slotToAdd = {
-			id: this.state.slots.length,
+			id: this.state.slots.length.toString(),
 			startTime: this.state.startTime,
       endTime:  this.state.endTime
 		}
+
 		if(this.state.startTime && this.state.endTime) {
 			this.setState({...this.state, slots: [...this.state.slots, slotToAdd ]})
 		}
@@ -81,6 +84,23 @@ class SlotBuilder extends React.Component {
     });
 	}
 
+	handleSubmit = () => {
+		const jobToSave = {
+			title: this.state.title,
+			description: this.state.description,
+			name: this.state.title,
+			date: this.state.date,
+			slots: this.state.slots
+		}
+
+		db.collection("jobs").add(jobToSave)
+		.then(() => {
+			console.log('added new job')
+		})
+		.catch(() => {
+			console.log('there is an error')
+		})
+	}
 
 	render() {
 		const ExampleCustomInput = ({ value, onClick }) => (
@@ -122,11 +142,10 @@ class SlotBuilder extends React.Component {
 			    <TextField
 						id="outlined-name"
 						fullWidth
-						lastName="lastName"
 						onChange={this.handleChange}
 						value={this.state.description}
 						margin="normal"
-						name="lastName"
+						name="description"
             variant="filled"
           />
 				</Grid>
@@ -157,7 +176,7 @@ class SlotBuilder extends React.Component {
 								  this.state.slots.map((item, key) => (
 								  	<li key={key} className="margin-top-xsmall display-flex">
 										  <Typography className="align-self-center">
-											  - {moment(item.startTime).format('h:mm:ss a')}  - {moment(item.endTime).format('h:mm:ss a')} 
+											  - {moment(item.startTime).format('h:mm:ss a').toString()}  - {moment(item.endTime).format('h:mm:ss a').toString()} 
 									  	</Typography>
 											<IconButton edge="end" onClick={() => this.handleDeleteSlot(item.id)} aria-label="delete" color="primary">
                         <DeleteIcon />
@@ -212,6 +231,7 @@ class SlotBuilder extends React.Component {
 				    <Button
               variant="contained"
 							color="primary"
+							onClick={this.handleSubmit}
               className="margin-right-xsmall margin-top-small full-width"
             >
               SUBMIT

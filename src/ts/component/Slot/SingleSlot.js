@@ -12,15 +12,17 @@ import {
   RadioGroup,
 } from '@material-ui/core/';
 
-const SingleSlot = (props) => {
+import moment from 'moment';
 
+const SingleSlot = (props) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState({});
 
   function handleChange(event) {
-    setValue(event.target.value);
     const id = event.target.value;
-    const item = props.slot.slots.filter((item) => item.id === id )
+    console.log(id)
+    const item = props.slot.slots.find((item) => item.id === id)
+    console.log(item)
     setValue(item);
   }
 
@@ -39,7 +41,7 @@ const SingleSlot = (props) => {
         >
         {
           props.slot.slots.map((item) => (
-            <FormControlLabel value={item.id} control={<Radio />} label={`${item.startTime} - ${item.endTime}`} />
+            <FormControlLabel value={item.id} control={<Radio />} label={`${moment(new Date(item.startTime)).format('h:mm:ss a').toString()} - ${moment(new Date(item.endTime)).format('h:mm:ss a').toString()}`} />
           ))
         }
       </RadioGroup>
@@ -57,12 +59,16 @@ const SingleSlot = (props) => {
       <Grid container={true} alignItems="center">
         <Grid item={true} xs={open ? 12 : 9}>
           <Typography variant="h6" className="color-secondary">
-            {props.slot.name}
+            {props.slot.title}
           </Typography>
           <Typography className="color-grey">{props.slot.description}</Typography>
           <div className="display-flex margin-top-small">
-            <Typography className="margin-right-xsmall color-secondary">Date:</Typography>
-            <Typography className="color-grey">{props.slot.date}</Typography>
+            <Typography className="margin-right-xsmall color-secondary">interview date:</Typography>
+            <Typography className="color-grey">
+              {
+                moment(props.slot.date).format("MMM Do YY")
+              }
+            </Typography>
           </div>
             {open &&
               <div className="margin-top-small">
