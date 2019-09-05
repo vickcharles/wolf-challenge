@@ -157,7 +157,8 @@ class SlotBuilder extends React.Component {
 						onChange={this.handleChangeDate}
 						name="date"
 					  peekNextMonth={true}
-					  showMonthDropdown={true}
+						showMonthDropdown={true}
+						minDate={moment().toDate()}
 					  showYearDropdown={true}
 						dropdownMode="select"
 						customInput={<ExampleCustomInput />}
@@ -227,7 +228,7 @@ class SlotBuilder extends React.Component {
 							</div>
 						</div>
 				 </Grid>
-				 <Grid xs={12} className="text-align-right">
+				 <Grid xs={12} className="text-align-right margin-bottom-small">
 				    <Button
               variant="contained"
 							color="primary"

@@ -5,13 +5,12 @@ import {
   Toolbar,
   Typography,
   Button,
-  Dialog,
-  DialogTitle,
   Container
 } from '@material-ui/core/';
 
 import '../../../assets/scss/Header.scss';
 import SlotBuilder from '../../component/Slot/SlotBuilder';
+import CommonDialog from './Dialog';
 
 import { Link } from "react-router-dom";
 
@@ -46,21 +45,13 @@ const Header = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      <Dialog
-        maxWidth="sm"
-        fullWidth={true}
-        className="dialog"
+      <CommonDialog
+        children={<div className="margin-top-large"> <SlotBuilder /> </div>}
         open={open}
-        scroll="body"
         onClose={() => setOpen(false)}
-      >
-        <DialogTitle id="alert-dialog-slide-title">CREATE A NEW JOB</DialogTitle>
-        <Container maxWidth="lg" className="section-container">
-          <div className="margin-top-large">
-            <SlotBuilder />
-          </div>
-        </Container>
-      </Dialog>
+        maxWidth="sm"
+        title="CREATE A NEW JOB"
+       />
     </div>
   );
 };

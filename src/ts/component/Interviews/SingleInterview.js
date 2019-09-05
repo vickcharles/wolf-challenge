@@ -21,19 +21,19 @@ const SingleInterview = () => {
 					  weed need good web developer
 					</Typography>
 					<div className="display-flex margin-top-small">
-            <Typography className="margin-right-xsmall color-secondary">Recruiter's name:</Typography>
+            <Typography className="margin-right-xsmall color-primary">Recruiter's name:</Typography>
             <Typography className="color-grey">
               Vickler Charles
             </Typography>
           </div>
 					<div className="display-flex">
-            <Typography className="margin-right-xsmall color-secondary">applicant's name:</Typography>
+            <Typography className="margin-right-xsmall color-primary">applicant's name:</Typography>
             <Typography className="color-grey">
               Osman Rodriguez
             </Typography>
           </div>
 					<div className="display-flex">
-            <Typography className="margin-right-xsmall color-secondary">Date of the interview:</Typography>
+            <Typography className="margin-right-xsmall color-primary">Date of the interview:</Typography>
             <Typography className="color-grey">
               1 September 2019
             </Typography>

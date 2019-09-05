@@ -13,12 +13,8 @@
   color: $containedPrimary !important;
 }
 
-.MuiDialog-paperFullWidth {
-  height: 600px !important;
-}
-
 .MuiTypography-body1 {
-  color: $colorSecondary;
+  color: $containedPrimary;
 }
 
 .MuiDialogTitle-root {
