@@ -21,7 +21,7 @@ class SlotBuilder extends React.Component {
 		super();
 		this.state = {
 			name: '',
-			lastName: '',
+			description: '',
 			title: '',
 			date: Date.now(),
 			startTime: Date.now(),
@@ -30,7 +30,7 @@ class SlotBuilder extends React.Component {
 		}
 	}
 
-	 handleChange = (e) => {
+	handleChange = (e) => {
     const target = e.currentTarget;
     const value = target.value;
     const name = target.name;
@@ -41,8 +41,17 @@ class SlotBuilder extends React.Component {
     });
 	}
 
+	handleDeleteSlot(slotId) {
+    this.setState({
+      slots: this.state.slots.filter(slot =>
+        slot.id !== slotId
+      )
+    });
+	};
+
 	handleAddSlot = () => {
 		const slotToAdd = {
+			id: this.state.slots.length,
 			startTime: this.state.startTime,
       endTime:  this.state.endTime
 		}
@@ -95,19 +104,6 @@ class SlotBuilder extends React.Component {
             variant="filled"
           />
 				</Grid>
-				<Grid item={true} xs={6}>
-			  	<label>Apellido</label>
-			    <TextField
-						id="outlined-name"
-						fullWidth
-						lastName="lastName"
-						onChange={this.handleChange}
-						value={this.state.lastName}
-						margin="normal"
-						name="lastName"
-            variant="filled"
-          />
-				</Grid>
 				<Grid item={true} xs={12}>
 			  	<label>Title</label>
 			    <TextField
@@ -118,6 +114,19 @@ class SlotBuilder extends React.Component {
 						onChange={this.handleChange}
 						margin="normal"
 						placeholder="ej: web developer needed"
+            variant="filled"
+          />
+				</Grid>
+				<Grid item={true} xs={12}>
+			  	<label>Description</label>
+			    <TextField
+						id="outlined-name"
+						fullWidth
+						lastName="lastName"
+						onChange={this.handleChange}
+						value={this.state.description}
+						margin="normal"
+						name="lastName"
             variant="filled"
           />
 				</Grid>
@@ -150,7 +159,7 @@ class SlotBuilder extends React.Component {
 										  <Typography className="align-self-center">
 											  - {moment(item.startTime).format('h:mm:ss a')}  - {moment(item.endTime).format('h:mm:ss a')} 
 									  	</Typography>
-											<IconButton edge="end" aria-label="delete" color="primary">
+											<IconButton edge="end" onClick={() => this.handleDeleteSlot(item.id)} aria-label="delete" color="primary">
                         <DeleteIcon />
                       </IconButton>
 									  </li>

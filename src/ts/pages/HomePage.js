@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <div className="margin-top-small">
       <Container>
-        <SectionTitle text="SLOTS" />
+        <SectionTitle text="JOBS NEAR YOU" />
           <Grid md={5}>
             <SlotsList />
           </Grid>

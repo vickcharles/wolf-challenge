@@ -54,8 +54,8 @@ const Header = () => {
         scroll="body"
         onClose={() => setOpen(false)}
       >
-        <DialogTitle id="alert-dialog-slide-title">CREATE A NEW SLOT</DialogTitle>
-        <Container maxWidth="lg">
+        <DialogTitle id="alert-dialog-slide-title">CREATE A NEW JOB</DialogTitle>
+        <Container maxWidth="lg" className="section-container">
           <div className="margin-top-large">
             <SlotBuilder />
           </div>
