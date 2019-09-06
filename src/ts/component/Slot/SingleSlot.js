@@ -33,20 +33,6 @@ const SingleSlot = (props) => {
   }
 
 
-  const validate = (values) => {
-		const formErrors = {};
-		const { name, slot } = values;
-		if(name === '') {
-			formErrors.name = 'this field is required'
-    }
-
-    if(!slot) {
-      formErrors.slot = 'you should select one slot'
-    }
-
-		return formErrors;
-	};
-
   const handleSubmit = () => {
     const reviewToSave = {
       name: name,
@@ -54,18 +40,7 @@ const SingleSlot = (props) => {
       job: db.doc('jobs/' + props.slot.id),
     }
 
-    const valuesToValidate = {
-      name: name,
-      slot: value
-    }
-
-    const formErrors = validate(valuesToValidate);
-
-    setErrors(formErrors, () => {
-    const errorsArray = Object.values(errors);
-    const isError = errorsArray.some(value => value);
-
-    if(!isError) {
+    if(name) {
       db.collection('interviews').add(reviewToSave)
        .then(() => {
         console.log('added new job')
@@ -73,9 +48,10 @@ const SingleSlot = (props) => {
 		  })
 		   .catch(() => {
 			   console.log('there is an error')
-    })
+      })
+    } else {
+      setErrors({ name: 'this field is require'})
     }
-    })
   }
 
   const renderSelectTime = () => (
@@ -114,12 +90,6 @@ const SingleSlot = (props) => {
              ))
             }
           </RadioGroup>
-          {errors.slot &&
-					 <>
-					   <br/>
-					   <span className="error">{errors.slot}</span>
-					 </>
-					}
         </FormControl>
       </Grid>
       <Grid md={12} className="margin-bottom-small margin-top-small text-align-right">
