@@ -46,7 +46,7 @@ const Header = () => {
         </Container>
       </AppBar>
       <CommonDialog
-        children={<div className="margin-top-large"> <SlotBuilder /> </div>}
+        children={<div className="margin-top-large"> <SlotBuilder close={() => setOpen(false)} /> </div>}
         open={open}
         onClose={() => setOpen(false)}
         maxWidth="sm"

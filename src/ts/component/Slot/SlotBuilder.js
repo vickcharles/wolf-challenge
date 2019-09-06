@@ -88,7 +88,7 @@ class SlotBuilder extends React.Component {
 		const jobToSave = {
 			title: this.state.title,
 			description: this.state.description,
-			name: this.state.title,
+			name: this.state.name,
 			date: this.state.date,
 			slots: this.state.slots
 		}
@@ -96,6 +96,7 @@ class SlotBuilder extends React.Component {
 		db.collection("jobs").add(jobToSave)
 		.then(() => {
 			console.log('added new job')
+			this.props.close();
 		})
 		.catch(() => {
 			console.log('there is an error')

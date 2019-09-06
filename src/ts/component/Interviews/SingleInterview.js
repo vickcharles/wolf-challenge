@@ -8,34 +8,35 @@ import {
 } from '@material-ui/core/';
 
 import AccessTime from '@material-ui/icons/AccessTime';
+import moment from 'moment';
 
-const SingleInterview = () => {
+const SingleInterview = (props) => {
   return (
     <Paper className="margin-top-small">
 		  <Grid container={true}>
 			  <Grid xs={12} md={7}>
 					<Typography variant="h6" className="color-secondary">
-            Weeb developer neeeded
+            {props.interview.job.title}
           </Typography>
           <Typography className="color-grey">
-					  weed need good web developer
+				  	{props.interview.job.description}
 					</Typography>
 					<div className="display-flex margin-top-small">
             <Typography className="margin-right-xsmall color-primary">Recruiter's name:</Typography>
             <Typography className="color-grey">
-              Vickler Charles
+            {props.interview.job.name}
             </Typography>
           </div>
 					<div className="display-flex">
             <Typography className="margin-right-xsmall color-primary">applicant's name:</Typography>
             <Typography className="color-grey">
-              Osman Rodriguez
+						  {props.interview.name}
             </Typography>
           </div>
 					<div className="display-flex">
             <Typography className="margin-right-xsmall color-primary">Date of the interview:</Typography>
             <Typography className="color-grey">
-              1 September 2019
+              {moment(props.interview.job.date.toDate()).format("MMM Do YY")}
             </Typography>
           </div>
 				</Grid>
@@ -45,7 +46,7 @@ const SingleInterview = () => {
               <AccessTime  />
             </IconButton>
             <Typography className="color-grey align-self-center">
-              - From 9am to 5pm
+              - From {moment(props.interview.selectedSlot.startTime).format('h:mm:ss a').toString()} to {moment(props.interview.selectedSlot.endTime).format('h:mm:ss a').toString()}
             </Typography>
           </div>
 				</Grid>

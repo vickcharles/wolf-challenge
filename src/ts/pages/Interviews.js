@@ -13,8 +13,8 @@ const Interviews = () => {
   return (
     <div className="margin-top-small">
       <Container>
-        <SectionTitle text="Schedule interviews" />
-        <Grid item={true} md={6}>
+        <SectionTitle text="SCHEDULE INTERVIEWS" />
+        <Grid item={true} md={7}>
           <InterviewsList />
         </Grid>
       </Container>
