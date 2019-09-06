@@ -5,7 +5,6 @@ import SingleInterview from './SingleInterview';
 import db from '../../../firestoreConfig.js';
 
 class InterviewsList extends React.Component {
-
   constructor() {
     super();
     this.state = {

@@ -6,7 +6,6 @@ import {
  Grid
 } from '@material-ui/core/';
 
-
 import InterviewsList from '../component/Interviews/InterviewsList';
 
 const Interviews = () => {

@@ -27,7 +27,7 @@ const Header = () => {
                 WOLF CHALLENGE
               </Typography>
             </Link>
-            <div>
+            <div className="display-flex">
               <Button
                 onClick={() => setOpen(true)}
                 variant="contained"
@@ -37,7 +37,7 @@ const Header = () => {
                 Post a job
               </Button>
               <Link to="/scheduled-interviews">
-                <Button color="inherit">
+                <Button color="inherit" className="hide-on-mobile">
                   All the scheduled interviews
                 </Button>
               </Link>

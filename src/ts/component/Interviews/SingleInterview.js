@@ -47,7 +47,7 @@ const SingleInterview = (props) => {
               <AccessTime  />
             </IconButton>
             <Typography className="color-grey align-self-center">
-              - From {moment(props.interview.selectedSlot.startTime).format('h:mm:ss a').toString()} to {moment(props.interview.selectedSlot.endTime).format('h:mm:ss a').toString()}
+              - From {moment(props.interview.selectedSlot.startTime.toDate()).format('h:mm:ss a').toString()} to {moment(props.interview.selectedSlot.endTime.toDate()).format('h:mm:ss a').toString()}
             </Typography>
           </div>
 				</Grid>

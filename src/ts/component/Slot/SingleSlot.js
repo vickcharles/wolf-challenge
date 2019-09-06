@@ -86,7 +86,7 @@ const SingleSlot = (props) => {
             >
             {
               props.slot.slots.map((item) => (
-                <FormControlLabel value={item.id} control={<Radio />} label={`${moment(new Date(item.startTime)).format('h:mm:ss a').toString()} - ${moment(new Date(item.endTime)).format('h:mm:ss a').toString()}`} />
+                <FormControlLabel value={item.id} control={<Radio />} label={`${moment(new Date(item.startTime.toDate())).format('h:mm:ss a').toString()} - ${moment(new Date(item.endTime.toDate())).format('h:mm:ss a').toString()}`} />
              ))
             }
           </RadioGroup>

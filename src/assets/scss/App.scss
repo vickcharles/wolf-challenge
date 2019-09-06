@@ -117,3 +117,20 @@ li {
 .MuiTypography-root {
   font-family: 'Poppins', sans-serif !important;
 }
+
+
+.hide-on-mobile {
+  display: none !important;
+  @media (min-width: 960px) {
+      display: block !important;
+    }
+}
+
+.hide-on-desktop {
+  display: block !important;
+
+  @media (min-width: 960px) {
+      display: none !important;
+  }
+}
+
