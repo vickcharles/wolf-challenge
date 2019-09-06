@@ -15,8 +15,8 @@ const SlotsList = () => {
         date: doc.data().date.toDate().toString(),
         slots: doc.data().slots.map((date) =>  ({
           ...date,
-          startTime: date.startTime.toDate().toString(),
-          endTime: date.endTime.toDate().toString()
+          startTime: date.startTime,
+          endTime: date.endTime
         })),
        }))
        console.log(jobs);
