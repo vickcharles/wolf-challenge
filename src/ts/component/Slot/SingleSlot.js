@@ -18,9 +18,7 @@ import db from '../../../firestoreConfig.js';
 
 import CommonDialog from '../common/Dialog';
 
-
 const SingleSlot = (props) => {
-
    const [name, setName] = React.useState("");
    const [open, setOpen] = React.useState(false);
    const [value, setValue] = React.useState({});

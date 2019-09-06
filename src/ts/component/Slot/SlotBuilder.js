@@ -10,13 +10,14 @@ import {
 } from '@material-ui/core/';
 
 import moment from 'moment';
+import db from '../../../firestoreConfig.js';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import DeleteIcon from '@material-ui/icons/Delete';
 import '../../../assets/scss/SlotBuilder.scss';
 
-import db from '../../../firestoreConfig.js';
+
 
 class SlotBuilder extends React.Component {
 	constructor() {
