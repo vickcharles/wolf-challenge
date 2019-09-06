@@ -20,3 +20,4 @@ To run a local WOLF-CHALLENGE development server and view the application in you
  * React JS
  * Material UI
  * React Router
+ * Moment JS
