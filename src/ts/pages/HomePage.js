@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <div className="margin-top-small">
       <Container>
-        <Grid item={true} md={12} className="text-align-right">
+        <Grid item={true} xs={12} md={12} className="text-align-right margin-bottom-small">
           <Link to="/scheduled-interviews">
             <Button
               variant="contained"
