@@ -24,7 +24,7 @@ class SlotBuilder extends React.Component {
 			name: '',
 			description: '',
 			title: '',
-			date: Date.now(),
+			date: null,
 			startTime: null,
 			endTime: null,
 			slots: [],
@@ -47,7 +47,7 @@ class SlotBuilder extends React.Component {
 			formErrors.title = 'this field is required'
 		}
 
-		if(date === Date.now()) {
+		if(!date) {
 			formErrors.date = 'select a date'
 		}
 
@@ -140,7 +140,7 @@ class SlotBuilder extends React.Component {
 	render() {
 		const ExampleCustomInput = ({ value, onClick }) => (
 			<button className="custom-input" onClick={onClick}>
-				{value}
+				{value ? value : 'Select an option'}
 			</button>
 		);
 
