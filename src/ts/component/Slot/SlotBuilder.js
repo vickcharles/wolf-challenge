@@ -17,8 +17,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DeleteIcon from '@material-ui/icons/Delete';
 import '../../../assets/scss/SlotBuilder.scss';
 
-
-
 class SlotBuilder extends React.Component {
 	constructor() {
 		super();
@@ -29,8 +27,35 @@ class SlotBuilder extends React.Component {
 			date: Date.now(),
 			startTime: Date.now(),
 			endTime: Date.now(),
-			slots: []
+			slots: [],
+			errors: {}
 		}
+	}
+
+	validate(values) {
+		const formErrors = {};
+		const { name, description, title, date, slots} = values;
+		if(name === '') {
+			formErrors.name = 'this field is required'
+		}
+
+		if(description === '') {
+			formErrors.description ='this field is required'
+		}
+
+		if(title === '') {
+			formErrors.title = 'this field is required'
+		}
+
+		if(date === Date.now()) {
+			formErrors.date = 'select a date'
+		}
+
+		if(slots.length === 0){
+			formErrors.slots = 'you should select at least one slot'
+		}
+
+		return formErrors;
 	}
 
 	handleChange = (e) => {
@@ -94,14 +119,22 @@ class SlotBuilder extends React.Component {
 			slots: this.state.slots
 		}
 
-		db.collection("jobs").add(jobToSave)
-		.then(() => {
-			console.log('added new job')
-			this.props.close();
+		const formErrors = this.validate(jobToSave);
+		this.setState({errors: formErrors}, () => {
+			const errorsArray = Object.values(this.state.errors);
+			const isError = errorsArray.some(value => value);
+			if(!isError) {
+				db.collection("jobs").add(jobToSave)
+				.then(() => {
+					console.log('added new job')
+					this.props.close();
+				})
+				.catch(() => {
+					console.log('there is an error')
+				})
+			}
 		})
-		.catch(() => {
-			console.log('there is an error')
-		})
+
 	}
 
 	render() {
@@ -122,6 +155,8 @@ class SlotBuilder extends React.Component {
 						margin="normal"
 						onChange={this.handleChange}
 						name="name"
+						error={!!this.state.errors.name}
+            helperText={this.state.errors.name}
 						value={this.state.name}
             variant="filled"
           />
@@ -134,6 +169,8 @@ class SlotBuilder extends React.Component {
 						value={this.state.title}
 						name="title"
 						onChange={this.handleChange}
+						error={!!this.state.errors.title}
+            helperText={this.state.errors.title}
 						margin="normal"
 						placeholder="ej: web developer needed"
             variant="filled"
@@ -146,6 +183,8 @@ class SlotBuilder extends React.Component {
 						fullWidth
 						onChange={this.handleChange}
 						value={this.state.description}
+						error={!!this.state.errors.description}
+            helperText={this.state.errors.description}
 						margin="normal"
 						name="description"
             variant="filled"
@@ -165,6 +204,13 @@ class SlotBuilder extends React.Component {
 						dropdownMode="select"
 						customInput={<ExampleCustomInput />}
 					/>
+					{this.state.errors.date &&
+					 <>
+					   <br/>
+					   <span className="error">this field is required</span>
+					 </>
+					}
+	
 				</Grid>
 	       <Grid item={true} xs={12}>
 				    <Typography className="color-primary">
@@ -229,6 +275,12 @@ class SlotBuilder extends React.Component {
                 </Button>
 							</div>
 						</div>
+						{this.state.errors.slots &&
+					 <>
+					   <br/>
+					   <span className="error">{this.state.errors.slots}</span>
+					 </>
+					}
 				 </Grid>
 				 <Grid xs={12} className="text-align-right margin-bottom-small">
 				    <Button

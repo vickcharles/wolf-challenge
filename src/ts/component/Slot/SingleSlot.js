@@ -21,7 +21,8 @@ import CommonDialog from '../common/Dialog';
 const SingleSlot = (props) => {
    const [name, setName] = React.useState("");
    const [open, setOpen] = React.useState(false);
-   const [value, setValue] = React.useState({});
+   const [value, setValue] = React.useState(props.slot.slots[0]);
+   const [errors, setErrors] = React.useState({});
 
   function handleChangeRadio(event) {
     const id = event.target.value;
@@ -31,6 +32,21 @@ const SingleSlot = (props) => {
     setValue(item);
   }
 
+
+  const validate = (values) => {
+		const formErrors = {};
+		const { name, slot } = values;
+		if(name === '') {
+			formErrors.name = 'this field is required'
+    }
+
+    if(!slot) {
+      formErrors.slot = 'you should select one slot'
+    }
+
+		return formErrors;
+	};
+
   const handleSubmit = () => {
     const reviewToSave = {
       name: name,
@@ -38,13 +54,27 @@ const SingleSlot = (props) => {
       job: db.doc('jobs/' + props.slot.id),
     }
 
-    db.collection('interviews').add(reviewToSave)
-    .then(() => {
-      console.log('added new job')
-      setOpen(false);
-		})
-		.catch(() => {
-			console.log('there is an error')
+    const valuesToValidate = {
+      name: name,
+      slot: value
+    }
+
+    const formErrors = validate(valuesToValidate);
+
+    setErrors(formErrors, () => {
+    const errorsArray = Object.values(errors);
+    const isError = errorsArray.some(value => value);
+
+    if(!isError) {
+      db.collection('interviews').add(reviewToSave)
+       .then(() => {
+        console.log('added new job')
+        setOpen(false);
+		  })
+		   .catch(() => {
+			   console.log('there is an error')
+    })
+    }
     })
   }
 
@@ -57,6 +87,8 @@ const SingleSlot = (props) => {
           fullWidth
 					margin="normal"
           name="name"
+          error={!!errors.name}
+          helperText={errors.name}
           value={name}
           onChange={e => setName(e.target.value)}
           variant="filled"
@@ -82,6 +114,12 @@ const SingleSlot = (props) => {
              ))
             }
           </RadioGroup>
+          {errors.slot &&
+					 <>
+					   <br/>
+					   <span className="error">{errors.slot}</span>
+					 </>
+					}
         </FormControl>
       </Grid>
       <Grid md={12} className="margin-bottom-small margin-top-small text-align-right">
