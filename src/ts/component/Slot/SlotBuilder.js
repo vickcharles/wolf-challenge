@@ -25,8 +25,8 @@ class SlotBuilder extends React.Component {
 			description: '',
 			title: '',
 			date: Date.now(),
-			startTime: Date.now(),
-			endTime: Date.now(),
+			startTime: null,
+			endTime: null,
 			slots: [],
 			errors: {}
 		}
